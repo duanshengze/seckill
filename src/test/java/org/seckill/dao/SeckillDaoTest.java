@@ -34,7 +34,7 @@ public class SeckillDaoTest {
         System.out.print(seckill);
     }
     @Test
-    public void reuceNumber() throws Exception {
+    public void testreuceNumber() throws Exception {
         seckillDao.reuceNumber(1000,new Date());
     }
 

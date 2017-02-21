@@ -22,7 +22,7 @@
         <!--关闭连接后 不自动commit-->
         <property name="autoCommitOnClose" value="false"/>
         <!--获取连接超时间-->
-        <property name="checkoutTimeout" value="1000"/>
+        <property name="checkoutTimeout" value="100000"/>
         <!--当获取连接失败重试次数-->
         <property name="acquireRetryAttempts" value="2"/>
 
