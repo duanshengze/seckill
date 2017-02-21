@@ -17,7 +17,7 @@
         AND number>0
     </update>
     <select id="queryById" resultType="Seckill" parameterType="long">
-        SELECT seckill_id,name,number,start_time,end_time,create_time
+        SELECT *
         FROM  seckill
         WHERE seckill_id=#{seckillId}
     </select>
@@ -27,8 +27,5 @@
         FROM  seckill
         ORDER BY create_time DESC
         LIMIT #{offet},#{limit}
-
-
-
     </select>
 </mapper>

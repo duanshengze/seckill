@@ -50,7 +50,7 @@
       <dependency>
           <groupId>c3p0</groupId>
           <artifactId>c3p0</artifactId>
-          <version>0.9.1.2</version>
+          <version>0.9.1.1</version>
       </dependency>
 
       <!--DAO框架：MyBatis依赖-->
@@ -123,6 +123,11 @@
           <groupId>org.springframework</groupId>
           <artifactId>spring-test</artifactId>
           <version>4.1.7.RELEASE</version>
+      </dependency>
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.11</version>
       </dependency>
 
   </dependencies>
