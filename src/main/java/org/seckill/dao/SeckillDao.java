@@ -17,7 +17,7 @@ public interface SeckillDao {
      * @param killTime
      * @return 如何影响行数>1,表示更新行数
      */
-    int reuceNumber( long seckillId,  Date killTime);
+    int reuceNumber( @Param("seckillId") long seckillId, @Param("killTime") Date killTime);
 
     /**
      * 根据id查询秒杀对象
@@ -32,5 +32,5 @@ public interface SeckillDao {
      * @param limit
      * @return
      */
-    List<Seckill> queryAll(int offet,int limit);
+    List<Seckill> queryAll(@Param("offset") int offet,@Param("limit") int limit);
 }

@@ -5,17 +5,16 @@
 <mapper namespace="org.seckill.dao.SuccessKilledDao">
     <insert id="insertSuccessKilled">
 -- 主键冲突 报错 忽略
-        INSERT IGNORE INTO success_killed(seckill_id,user_phone)
-        VALUES (#{seckillId},#{userPhone})
+        INSERT IGNORE INTO success_killed(seckill_id,user_phone,state)
+        VALUES (#{seckilled},#{userPhone},0)
     </insert>
+    <!--  根据id查询SucceKilled并携带秒杀产品对象的实体-->
+    <!--      可以自由控制SQL-->
     <select id="queryByIdWithSeckill" resultType="SuccessKilled">
---       根据id查询SucceKilled并携带秒杀产品对象的实体\
---
---        可以自由控制SQL
         SELECT
         sk.seckill_id,
         sk.user_phone,
-        sk.create.time,
+        sk.create_time,
         sk.state,
         s.seckill_id "seckill.seckill_id",
         s.name "seckill.name",
@@ -25,7 +24,7 @@
         s.create_time "seckill.create_time"
         FROM success_killed sk
         INNER JOIN seckill s on sk.seckill_id=s.seckill_id
-        WHERE sk.seckill_id=#{seckillId}
+        WHERE sk.seckill_id=#{seckillId} AND sk.user_phone=#{userPhone}
 
     </select>
 </mapper>
