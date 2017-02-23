@@ -5,6 +5,17 @@ package org.seckill.dto;
  * Created by dsz on 17/2/22.
  */
 public class Exposer {
+    @Override
+    public String toString() {
+        return "Exposer{" +
+                "exposed=" + exposed +
+                ", md5='" + md5 + '\'' +
+                ", seckillId=" + seckillId +
+                ", now=" + now +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
+    }
 
     //是否开启秒杀
     private  boolean exposed;

@@ -64,7 +64,7 @@ public class SeckillServiceImp implements SeckillService {
        }
 
        //转化为特定的字符串 不可逆
-        String md5=getMD5(seckillId);//TODO
+        String md5=getMD5(seckillId);
 
         return new Exposer(true,md5,seckillId);
 
@@ -89,15 +89,13 @@ public class SeckillServiceImp implements SeckillService {
      * 或者剥离事务方法外部
      * 3：不是所有的方法都需要事务，如只有一条修改操作，只读操作不需要事务控制
      */
-    public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5) throws SeckillException, RepeatKillException, SeckillCloseException {
-        if (md5==null||md5.equals(getMD5(seckillId))){
+    public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5) throws RepeatKillException, SeckillException, SeckillCloseException {
+        if (md5==null||!md5.equals(getMD5(seckillId))){
             throw new SeckillException("seckill data rewrite");
         }
 
         //执行秒杀逻辑：减库存+记录购买行为
         Date nowTime=new Date();
-
-
         try {
             int updateCount=seckillDao.reuceNumber(seckillId,nowTime);
             if (updateCount<=0){
@@ -113,16 +111,12 @@ public class SeckillServiceImp implements SeckillService {
 
                 }
             }
-
-
         }catch (SeckillCloseException e1){
             throw  e1;
         }catch (RepeatKillException e2){
             throw  e2;
         }
-
         catch (Exception e){
-
             logger.error(e.getMessage(),e);
             //所有的编译期 转化为运行期异常
             throw  new SeckillException("seckill inner error:"+e.getMessage());
