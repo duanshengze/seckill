@@ -26,12 +26,13 @@ public class SecklillController {
     private final Logger logger= LoggerFactory.getLogger(this.getClass());
     @Autowired
     private SeckillService seckillService;
-    @RequestMapping(name = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(Model model){
         // list.jsp+model=ModelAndView
         List<Seckill>list=seckillService.getSeckillList();
         model.addAttribute("list",list);
-        return "list";///WEB-INF/jsp/"list".jsp
+        return "list";
+        ///WEB-INF/jsp/"list".jsp
     }
     @RequestMapping(value = "/{seckillId}/detail",method = RequestMethod.GET)
     public String detail(@PathVariable("seckillId")Long seckillId, Model model){
@@ -91,7 +92,7 @@ public class SecklillController {
         }
 
     }
-@RequestMapping(value = "time/now",method = RequestMethod.GET)
+@RequestMapping(value = "/time/now",method = RequestMethod.GET)
     public  SeckillResult<Long> time(){
         Date now=new Date();
         return new SeckillResult(true,now.getTime());
