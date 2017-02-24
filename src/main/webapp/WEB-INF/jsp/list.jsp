@@ -26,7 +26,6 @@
                 <th>详情页</th>
                 </thead>
                 <tbody>
-                <c:forEach var="sk" items=""
                 </tbody>
             </table>
         </div>
